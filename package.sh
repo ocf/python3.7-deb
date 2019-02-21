@@ -19,7 +19,9 @@ VERSION="$(apt-cache policy python3.7 | awk '/Candidate: / {print $2}')"
 mv /etc/apt/sources.list.bak /etc/apt/sources.list
 apt update
 # end dragons
-dget -x http://deb.debian.org/debian/pool/main/p/python3.7/python3.7_$VERSION.dsc
-cd /tmp/python3.7_$VERSION
+dget -ux http://deb.debian.org/debian/pool/main/p/python3.7/python3.7_$VERSION.dsc
+cd /tmp/python3.7-3.7.2
 dch --local ~ocf --distribution stretch-backports 'Backported by OCF for stretch.'
 dpkg-buildpackage -us -uc -sa
+cd ..
+cp *.tar.gz *.tar.bz2 *.debian.tar.xz *.dsc *.changes *.deb /mnt

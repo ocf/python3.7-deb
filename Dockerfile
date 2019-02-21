@@ -27,7 +27,10 @@ RUN apt-get update \
         texinfo \
         # needed for building the package
         packaging-dev \
-        devscripts
+        devscripts \
+        # others?
+        lsb-release \
+        xauth
 
 COPY package.sh /tmp
 
