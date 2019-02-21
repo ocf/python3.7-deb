@@ -23,7 +23,6 @@ RUN apt-get update \
         libffi-dev \
         libgpm2 time \
         xvfb \
-        python3-sphinx \
         texinfo \
         # needed for building the package
         packaging-dev \
@@ -31,6 +30,8 @@ RUN apt-get update \
         # others?
         lsb-release \
         xauth
+# required by Python, but the stretch version is too old
+RUN DEBIAN_FRONTEND=noninteractive apt-get -t stretch-backports install -y --no-install-recommends python3-sphinx
 
 COPY package.sh /tmp
 
